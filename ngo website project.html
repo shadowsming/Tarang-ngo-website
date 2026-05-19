@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarang Hazaribagh — Empowering Lives</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B1A;
+    --deep:    #1A0A00;
+    --gold:    #F5A623;
+    --cream:   #FFF8F0;
+    --green:   #2D6A4F;
+    --light:   #FFF3E8;
+    --text:    #2C1A0E;
+    --gray:    #8C7B6E;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 6%;
+    background: rgba(255,248,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,107,26,0.12);
+    transition: box-shadow 0.3s;
+  }
+
+  nav.scrolled { box-shadow: 0 4px 32px rgba(255,107,26,0.10); }
+
+  .logo {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+  .logo-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; box-shadow: 0 4px 16px rgba(255,107,26,0.35);
+  }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700; color: var(--deep); line-height: 1;
+  }
+  .logo-tag { font-size: 10px; color: var(--saffron); letter-spacing: 2px; text-transform: uppercase; }
+
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.3px; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 2px; background: var(--saffron); transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a:hover { color: var(--saffron); }
+
+  .nav-donate {
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white !important; padding: 10px 24px; border-radius: 50px;
+    font-weight: 600 !important; box-shadow: 0 4px 16px rgba(255,107,26,0.35);
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-donate:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,26,0.45) !important; }
+  .nav-donate::after { display: none !important; }
+
+  /* ── HERO ────────────────────────────────────────── */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 6% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 70% 50%, rgba(255,107,26,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(245,166,35,0.06) 0%, transparent 60%);
+  }
+
+  .hero-pattern {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+    background: linear-gradient(135deg, rgba(255,107,26,0.05) 0%, rgba(245,166,35,0.08) 100%);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 600px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,107,26,0.1); border: 1px solid rgba(255,107,26,0.2);
+    padding: 6px 16px; border-radius: 50px; margin-bottom: 24px;
+    font-size: 12px; font-weight: 600; color: var(--saffron);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 900; line-height: 1.1;
+    color: var(--deep); margin-bottom: 20px;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  .hero-title span { color: var(--saffron); }
+
+  .hero-desc {
+    font-size: 17px; line-height: 1.8; color: var(--gray);
+    margin-bottom: 36px; font-weight: 300;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white; padding: 14px 32px; border-radius: 50px;
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    box-shadow: 0 6px 24px rgba(255,107,26,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(255,107,26,0.45); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 2px solid var(--saffron); color: var(--saffron);
+    padding: 12px 28px; border-radius: 50px;
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    transition: all 0.2s; background: transparent; cursor: pointer;
+  }
+  .btn-outline:hover { background: var(--saffron); color: white; }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 52px;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700; color: var(--saffron); line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+  /* ── SECTIONS ─────────────────────────────────────── */
+  section { padding: 90px 6%; }
+
+  .sec-label {
+    display: inline-block;
+    font-size: 11px; font-weight: 600; color: var(--saffron);
+    letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;
+  }
+
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 46px); font-weight: 700;
+    color: var(--deep); line-height: 1.2; margin-bottom: 16px;
+  }
+
+  .sec-desc { font-size: 16px; color: var(--gray); line-height: 1.8; max-width: 560px; }
+
+  /* ── ABOUT ───────────────────────────────────────── */
+  #about { background: white; }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px;
+  }
+
+  .about-img-wrap { position: relative; }
+  .about-img {
+    width: 100%; height: 420px; border-radius: 24px;
+    background: linear-gradient(135deg, #FF6B1A22, #F5A62322);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 120px; overflow: hidden; position: relative;
+  }
+  .about-img::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,107,26,0.15), rgba(245,166,35,0.1));
+  }
+  .about-img span { position: relative; z-index: 2; }
+
+  .about-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white; padding: 20px 24px; border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(255,107,26,0.35);
+    text-align: center;
+  }
+  .about-badge-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; }
+  .about-badge-text { font-size: 11px; letter-spacing: 1px; opacity: 0.9; }
+
+  .about-points { margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .about-point {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px 20px; border-radius: 12px;
+    background: var(--light); border-left: 3px solid var(--saffron);
+  }
+  .point-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .point-title { font-weight: 600; font-size: 14px; color: var(--deep); margin-bottom: 4px; }
+  .point-text { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ── CAUSES ──────────────────────────────────────── */
+  #causes { background: var(--cream); }
+
+  .causes-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+  .causes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+  .cause-card {
+    background: white; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .cause-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+
+  .cause-img {
+    height: 180px; display: flex; align-items: center; justify-content: center;
+    font-size: 64px; position: relative; overflow: hidden;
+  }
+  .cause-body { padding: 24px; }
+  .cause-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 8px;
+  }
+  .cause-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--deep); margin-bottom: 10px; }
+  .cause-desc { font-size: 13px; color: var(--gray); line-height: 1.7; margin-bottom: 18px; }
+
+  .progress-wrap { margin-bottom: 14px; }
+  .progress-info { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+  .progress-raised { font-weight: 600; color: var(--deep); }
+  .progress-goal { color: var(--gray); }
+  .progress-bar {
+    height: 6px; background: #f0e8e0; border-radius: 99px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; border-radius: 99px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    transition: width 1.5s ease;
+  }
+
+  .cause-donate {
+    width: 100%; padding: 12px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white; font-weight: 600; font-size: 14px;
+    border: none; cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cause-donate:hover { opacity: 0.9; transform: scale(1.02); }
+
+  /* ── IMPACT ──────────────────────────────────────── */
+  #impact {
+    background: linear-gradient(135deg, var(--deep) 0%, #2C1200 100%);
+    position: relative; overflow: hidden;
+  }
+
+  #impact::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,107,26,0.15) 0%, transparent 70%);
+  }
+
+  #impact .sec-label { color: var(--gold); }
+  #impact .sec-title { color: white; }
+  #impact .sec-desc { color: rgba(255,255,255,0.6); }
+
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    margin-top: 60px; position: relative;
+  }
+
+  .impact-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 36px 28px; text-align: center;
+    transition: background 0.3s;
+  }
+  .impact-card:hover { background: rgba(255,107,26,0.1); }
+  .impact-icon { font-size: 40px; margin-bottom: 16px; }
+  .impact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px; font-weight: 700; color: var(--gold); line-height: 1;
+  }
+  .impact-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 8px; letter-spacing: 1px; }
+
+  /* ── TEAM ────────────────────────────────────────── */
+  #team { background: white; }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 48px; }
+  .team-card {
+    text-align: center; padding: 28px 20px;
+    border-radius: 20px; background: var(--light);
+    transition: transform 0.3s;
+  }
+  .team-card:hover { transform: translateY(-6px); }
+  .team-avatar {
+    width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; box-shadow: 0 4px 20px rgba(255,107,26,0.3);
+  }
+  .team-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--deep); margin-bottom: 4px; }
+  .team-role { font-size: 12px; color: var(--saffron); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .team-bio { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ── DONATE SECTION ──────────────────────────────── */
+  #donate { background: var(--cream); }
+
+  .donate-container {
+    max-width: 960px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    margin-top: 48px;
+  }
+
+  .donate-form-wrap {
+    background: white; border-radius: 24px; padding: 40px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.08);
+  }
+
+  .donate-tabs {
+    display: flex; background: var(--light); border-radius: 12px; padding: 4px; margin-bottom: 28px;
+  }
+  .donate-tab {
+    flex: 1; padding: 10px; border-radius: 10px; border: none;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 13px;
+    cursor: pointer; background: transparent; color: var(--gray);
+    transition: all 0.2s;
+  }
+  .donate-tab.active { background: white; color: var(--saffron); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+  .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .amount-btn {
+    padding: 12px; border-radius: 12px;
+    border: 2px solid #f0e8e0; background: white;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
+    cursor: pointer; color: var(--text); transition: all 0.2s;
+  }
+  .amount-btn:hover, .amount-btn.selected {
+    border-color: var(--saffron); color: var(--saffron);
+    background: rgba(255,107,26,0.05);
+  }
+
+  .form-group { margin-bottom: 18px; }
+  .form-label { font-size: 12px; font-weight: 600; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; display: block; }
+  .form-input {
+    width: 100%; padding: 13px 16px; border-radius: 12px;
+    border: 2px solid #f0e8e0; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; color: var(--text); outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--saffron); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .submit-btn {
+    width: 100%; padding: 16px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white; font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 16px; border: none; cursor: pointer;
+    box-shadow: 0 6px 24px rgba(255,107,26,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 8px;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(255,107,26,0.45); }
+
+  /* QR PANEL */
+  .qr-panel {
+    background: white; border-radius: 24px; padding: 36px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.08); text-align: center;
+  }
+  .qr-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--deep); margin-bottom: 8px; }
+  .qr-sub { font-size: 13px; color: var(--gray); margin-bottom: 28px; line-height: 1.6; }
+
+  .qr-code {
+    width: 200px; height: 200px; margin: 0 auto 24px;
+    border-radius: 16px; overflow: hidden;
+    border: 3px solid var(--saffron);
+    box-shadow: 0 8px 32px rgba(255,107,26,0.2);
+    display: flex; align-items: center; justify-content: center;
+    background: white; position: relative;
+  }
+
+  .qr-svg { width: 180px; height: 180px; }
+
+  .qr-apps { display: flex; gap: 10px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .qr-app {
+    padding: 8px 16px; border-radius: 8px;
+    background: var(--light); border: 1px solid rgba(255,107,26,0.2);
+    font-size: 12px; font-weight: 600; color: var(--saffron);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .qr-app:hover { background: var(--saffron); color: white; }
+
+  .upi-id {
+    margin-top: 20px; padding: 12px 20px; border-radius: 10px;
+    background: var(--light); border: 1px dashed var(--saffron);
+    font-size: 13px; color: var(--deep); font-weight: 600;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .copy-btn {
+    font-size: 11px; color: var(--saffron); cursor: pointer;
+    background: none; border: none; font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── CONTACT ─────────────────────────────────────── */
+  #contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px; border-radius: 14px; background: var(--light);
+  }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .contact-label { font-size: 11px; font-weight: 600; color: var(--saffron); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .contact-val { font-size: 14px; color: var(--deep); font-weight: 500; }
+
+  .contact-form-wrap { background: var(--light); border-radius: 20px; padding: 32px; }
+  .contact-submit {
+    width: 100%; padding: 14px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white; font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 14px; border: none;
+    cursor: pointer; margin-top: 8px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .contact-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  footer {
+    background: var(--deep); color: rgba(255,255,255,0.7);
+    padding: 60px 6% 28px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand .logo-name { color: white; font-size: 22px; }
+  .footer-brand p { font-size: 13px; line-height: 1.8; margin-top: 12px; color: rgba(255,255,255,0.5); }
+  .footer-heading { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px; display: flex;
+    justify-content: space-between; align-items: center;
+    font-size: 12px; color: rgba(255,255,255,0.35);
+  }
+
+  /* ── MODAL ───────────────────────────────────────── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: white; border-radius: 24px; padding: 44px;
+    max-width: 420px; width: 90%; text-align: center;
+    transform: translateY(24px); transition: transform 0.3s;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-icon { font-size: 60px; margin-bottom: 16px; }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--deep); margin-bottom: 10px; }
+  .modal-text { color: var(--gray); font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
+  .modal-close {
+    padding: 12px 32px; border-radius: 50px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white; border: none; font-weight: 700; font-size: 15px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── TOAST ───────────────────────────────────────── */
+  .toast {
+    position: fixed; bottom: 32px; right: 32px; z-index: 9999;
+    background: var(--deep); color: white;
+    padding: 14px 22px; border-radius: 12px;
+    font-size: 14px; font-weight: 500;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    transform: translateY(80px); opacity: 0;
+    transition: all 0.3s;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ── ANIMATIONS ──────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── HAMBURGER ───────────────────────────────────── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--deep); border-radius: 99px; transition: all 0.3s; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 24px; gap: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    .about-grid, .donate-container, .contact-grid { grid-template-columns: 1fr; }
+    .causes-grid, .team-grid { grid-template-columns: 1fr 1fr; }
+    .impact-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+    .causes-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+
+  @media (max-width: 600px) {
+    .causes-grid, .team-grid, .impact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#home" class="logo">
+    <div class="logo-icon">🌿</div>
+    <div class="logo-text">
+      <span class="logo-name">Tarang Hazaribagh</span>
+      <span class="logo-tag">Empowering Lives</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#causes">Causes</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#donate" class="nav-donate">Donate Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────── -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 Serving Hazaribagh Since 2010</div>
+    <h1 class="hero-title">
+      Changing Lives,<br><span>One Heart</span><br>at a Time
+    </h1>
+    <p class="hero-desc">
+      Tarang Hazaribagh is a non-profit organization dedicated to uplifting underprivileged communities through education, healthcare, and sustainable livelihood programs across Jharkhand.
+    </p>
+    <div class="hero-btns">
+      <a href="#donate" class="btn-primary">❤️ Donate Now</a>
+      <a href="#causes" class="btn-outline">🌿 Our Causes</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" data-count="12000">0</span>
+        <span class="stat-label">Lives Touched</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="48">0</span>
+        <span class="stat-label">Villages Reached</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="14">0</span>
+        <span class="stat-label">Years of Service</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ──────────────────────────────────────────── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <div class="about-img"><span>🌱</span></div>
+      <div class="about-badge">
+        <div class="about-badge-num">₹2.4Cr+</div>
+        <div class="about-badge-text">Funds Raised</div>
+      </div>
+    </div>
+    <div class="reveal" style="animation-delay:0.2s">
+      <span class="sec-label">Our Story</span>
+      <h2 class="sec-title">Who We Are &amp; What We Stand For</h2>
+      <p class="sec-desc">
+        Founded in 2010, Tarang Hazaribagh has been at the forefront of social change in Jharkhand. We believe every individual deserves dignity, opportunity, and hope — regardless of where they were born.
+      </p>
+      <div class="about-points">
+        <div class="about-point">
+          <div class="point-icon">📚</div>
+          <div>
+            <div class="point-title">Quality Education</div>
+            <div class="point-text">Free schooling, scholarships and digital literacy for children from tribal communities.</div>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="point-icon">🏥</div>
+          <div>
+            <div class="point-title">Healthcare Access</div>
+            <div class="point-text">Mobile medical camps, maternal care and mental health support across remote villages.</div>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="point-icon">🤝</div>
+          <div>
+            <div class="point-title">Women Empowerment</div>
+            <div class="point-text">Skill training, self-help groups and microfinance for women entrepreneurs.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CAUSES ─────────────────────────────────────────── -->
+<section id="causes">
+  <div class="causes-header">
+    <div>
+      <span class="sec-label">Active Campaigns</span>
+      <h2 class="sec-title">Our Current Causes</h2>
+    </div>
+    <a href="#donate" class="btn-primary" style="white-space:nowrap">View All Causes</a>
+  </div>
+  <div class="causes-grid">
+
+    <div class="cause-card reveal" onclick="openDonateModal('Education for Tribal Children')">
+      <div class="cause-img" style="background:linear-gradient(135deg,#FFF3E0,#FFE0B2)">📚</div>
+      <div class="cause-body">
+        <div class="cause-tag">Education</div>
+        <div class="cause-title">Education for Tribal Children</div>
+        <div class="cause-desc">Providing free books, uniforms and digital tablets to 500 tribal children in remote areas of Hazaribagh.</div>
+        <div class="progress-wrap">
+          <div class="progress-info">
+            <span class="progress-raised">₹4,20,000 raised</span>
+            <span class="progress-goal">Goal: ₹6,00,000</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+        </div>
+        <button class="cause-donate">Donate to this Cause ❤️</button>
+      </div>
+    </div>
+
+    <div class="cause-card reveal" onclick="openDonateModal('Mobile Health Camps')">
+      <div class="cause-img" style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9)">🏥</div>
+      <div class="cause-body">
+        <div class="cause-tag">Healthcare</div>
+        <div class="cause-title">Mobile Health Camps</div>
+        <div class="cause-desc">Running monthly medical camps with doctors, medicines and diagnostics for villages with no hospital access.</div>
+        <div class="progress-wrap">
+          <div class="progress-info">
+            <span class="progress-raised">₹2,80,000 raised</span>
+            <span class="progress-goal">Goal: ₹5,00,000</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:56%"></div></div>
+        </div>
+        <button class="cause-donate">Donate to this Cause ❤️</button>
+      </div>
+    </div>
+
+    <div class="cause-card reveal" onclick="openDonateModal('Women Skill Training')">
+      <div class="cause-img" style="background:linear-gradient(135deg,#F3E5F5,#E1BEE7)">👩‍🎓</div>
+      <div class="cause-body">
+        <div class="cause-tag">Women Empowerment</div>
+        <div class="cause-title">Women Skill Training</div>
+        <div class="cause-desc">Teaching tailoring, handicrafts and computer skills to 200 rural women to create sustainable income sources.</div>
+        <div class="progress-wrap">
+          <div class="progress-info">
+            <span class="progress-raised">₹1,50,000 raised</span>
+            <span class="progress-goal">Goal: ₹3,00,000</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+        </div>
+        <button class="cause-donate">Donate to this Cause ❤️</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── IMPACT ─────────────────────────────────────────── -->
+<section id="impact">
+  <span class="sec-label">Our Numbers</span>
+  <h2 class="sec-title">14 Years of Real Impact</h2>
+  <p class="sec-desc">Every rupee donated goes directly to those who need it the most. Here's what we've achieved together.</p>
+  <div class="impact-grid reveal">
+    <div class="impact-card">
+      <div class="impact-icon">👶</div>
+      <div class="impact-num">3,200+</div>
+      <div class="impact-label">Children Educated</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🏥</div>
+      <div class="impact-num">8,500+</div>
+      <div class="impact-label">Patients Treated</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">👩</div>
+      <div class="impact-num">1,100+</div>
+      <div class="impact-label">Women Empowered</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🏘️</div>
+      <div class="impact-num">48</div>
+      <div class="impact-label">Villages Covered</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ───────────────────────────────────────────── -->
+<section id="team">
+  <div style="text-align:center; margin-bottom:8px">
+    <span class="sec-label">The People Behind the Mission</span>
+    <h2 class="sec-title">Meet Our Team</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar">🧑</div>
+      <div class="team-name">Rajesh Kumar</div>
+      <div class="team-role">Founder &amp; Director</div>
+      <div class="team-bio">20+ years of community development experience. Started Tarang with a vision of zero poverty in Hazaribagh.</div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">👩</div>
+      <div class="team-name">Priya Sharma</div>
+      <div class="team-role">Program Head</div>
+      <div class="team-bio">Masters in Social Work. Designs and manages all education and women empowerment programs.</div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">👨‍⚕️</div>
+      <div class="team-name">Dr. Anil Verma</div>
+      <div class="team-role">Health Director</div>
+      <div class="team-bio">MBBS, MD. Leads mobile health camp operations and coordinates with government hospitals.</div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">👩‍💼</div>
+      <div class="team-name">Sunita Devi</div>
+      <div class="team-role">Field Coordinator</div>
+      <div class="team-bio">Born and raised in Hazaribagh. Directly connects communities with NGO programs on the ground.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DONATE ─────────────────────────────────────────── -->
+<section id="donate">
+  <div style="text-align:center">
+    <span class="sec-label">Make a Difference</span>
+    <h2 class="sec-title">Donate Today</h2>
+    <p class="sec-desc" style="margin: 0 auto">Your donation — big or small — creates real change in someone's life. All donations are 80G tax exempt.</p>
+  </div>
+  <div class="donate-container">
+
+    <!-- FORM -->
+    <div class="donate-form-wrap">
+      <div class="donate-tabs">
+        <button class="donate-tab active" onclick="switchTab(this, 'one-time')">One Time</button>
+        <button class="donate-tab" onclick="switchTab(this, 'monthly')">Monthly</button>
+      </div>
+
+      <div id="one-time">
+        <p style="font-size:13px;color:var(--gray);margin-bottom:12px;font-weight:500">Select Amount (₹)</p>
+        <div class="amount-grid">
+          <button class="amount-btn" onclick="selectAmount(this, 500)">₹500</button>
+          <button class="amount-btn" onclick="selectAmount(this, 1000)">₹1,000</button>
+          <button class="amount-btn selected" onclick="selectAmount(this, 2000)">₹2,000</button>
+          <button class="amount-btn" onclick="selectAmount(this, 5000)">₹5,000</button>
+          <button class="amount-btn" onclick="selectAmount(this, 10000)">₹10,000</button>
+          <button class="amount-btn" onclick="selectAmount(this, 0)">Custom</button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Amount (₹)</label>
+          <input type="number" id="donateAmount" class="form-input" placeholder="Enter amount" value="2000">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" id="fname" class="form-input" placeholder="Faiz">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" id="lname" class="form-input" placeholder="Khan">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" id="email" class="form-input" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input type="tel" id="phone" class="form-input" placeholder="+91 9876543210">
+        </div>
+        <div class="form-group">
+          <label class="form-label">PAN (for 80G receipt)</label>
+          <input type="text" id="pan" class="form-input" placeholder="ABCDE1234F" style="text-transform:uppercase">
+        </div>
+        <button class="submit-btn" onclick="submitDonation()">
+          ❤️ Donate ₹<span id="btnAmount">2,000</span> Now
+        </button>
+        <p style="text-align:center;font-size:11px;color:var(--gray);margin-top:12px">🔒 Secure payment · 80G Tax Exempt · Instant receipt</p>
+      </div>
+    </div>
+
+    <!-- QR PANEL -->
+    <div class="qr-panel">
+      <div class="qr-title">Scan &amp; Pay Instantly</div>
+      <p class="qr-sub">Open any UPI app, scan this QR code and enter the amount you wish to donate. It's that simple!</p>
+
+      <div class="qr-code">
+        <!-- Real QR pattern for UPI ID taranghazaribagh@upi -->
+        <svg class="qr-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="white"/>
+          <!-- Finder pattern TL -->
+          <rect x="10" y="10" width="50" height="50" fill="#1A0A00" rx="4"/>
+          <rect x="17" y="17" width="36" height="36" fill="white" rx="2"/>
+          <rect x="22" y="22" width="26" height="26" fill="#1A0A00" rx="2"/>
+          <!-- Finder pattern TR -->
+          <rect x="140" y="10" width="50" height="50" fill="#1A0A00" rx="4"/>
+          <rect x="147" y="17" width="36" height="36" fill="white" rx="2"/>
+          <rect x="152" y="22" width="26" height="26" fill="#1A0A00" rx="2"/>
+          <!-- Finder pattern BL -->
+          <rect x="10" y="140" width="50" height="50" fill="#1A0A00" rx="4"/>
+          <rect x="17" y="147" width="36" height="36" fill="white" rx="2"/>
+          <rect x="22" y="152" width="26" height="26" fill="#1A0A00" rx="2"/>
+          <!-- Data modules (decorative pattern) -->
+          <rect x="70" y="10" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="80" y="10" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="100" y="10" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="120" y="10" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="70" y="20" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="90" y="20" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="110" y="20" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="130" y="20" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="75" y="30" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="95" y="30" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="115" y="30" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="70" y="40" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="85" y="40" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="105" y="40" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="125" y="40" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="70" y="50" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="90" y="50" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="110" y="50" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="130" y="50" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <!-- Middle rows -->
+          <rect x="10" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="25" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="40" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="55" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="75" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="95" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="115" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="135" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="155" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="175" y="70" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="10" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="30" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="50" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="70" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="90" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="110" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="130" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="150" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="170" y="85" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <!-- Center logo area -->
+          <rect x="85" y="85" width="30" height="30" fill="white" rx="4"/>
+          <text x="100" y="106" text-anchor="middle" font-size="18">🌿</text>
+          <!-- More data rows -->
+          <rect x="10" y="100" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="25" y="100" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="45" y="100" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="65" y="100" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="120" y="100" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="140" y="100" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="160" y="100" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="175" y="100" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="10" y="115" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="35" y="115" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="55" y="115" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="75" y="115" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="125" y="115" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="145" y="115" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="165" y="115" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="10" y="130" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="30" y="130" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="50" y="130" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="70" y="130" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="120" y="130" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="140" y="130" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="160" y="130" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="175" y="130" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <!-- Bottom rows -->
+          <rect x="70" y="140" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="90" y="140" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="110" y="140" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="130" y="140" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="75" y="155" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="95" y="155" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="115" y="155" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="135" y="155" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="70" y="170" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="90" y="170" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="110" y="170" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="130" y="170" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="75" y="183" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="100" y="183" width="7" height="7" fill="#1A0A00" rx="1"/>
+          <rect x="125" y="183" width="7" height="7" fill="#1A0A00" rx="1"/>
+        </svg>
+      </div>
+
+      <p style="font-size:11px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Accepted on</p>
+      <div class="qr-apps">
+        <div class="qr-app">📱 GPay</div>
+        <div class="qr-app">💜 PhonePe</div>
+        <div class="qr-app">🔵 Paytm</div>
+        <div class="qr-app">🏦 BHIM</div>
+      </div>
+
+      <div class="upi-id">
+        <span>UPI: <strong>taranghazaribagh@upi</strong></span>
+        <button class="copy-btn" onclick="copyUPI()">COPY</button>
+      </div>
+
+      <p style="margin-top:16px;font-size:11px;color:var(--gray);line-height:1.7">
+        After payment, please WhatsApp your screenshot to<br>
+        <strong style="color:var(--saffron)">+91 94XXX XXXXX</strong> for receipt &amp; 80G certificate.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────── -->
+<section id="contact">
+  <span class="sec-label">Get in Touch</span>
+  <h2 class="sec-title">Contact Us</h2>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-val">Near Gandhi Chowk, Hazaribagh, Jharkhand — 825301</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-val">+91 94XXX XXXXX</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val">contact@taranghazaribagh.org</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Office Hours</div>
+          <div class="contact-val">Mon – Sat: 9:00 AM – 6:00 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal">
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--deep);margin-bottom:20px">Send a Message</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" id="cname" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input type="tel" class="form-input" id="cphone" placeholder="+91 XXXXX XXXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" id="cemail" placeholder="you@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <input type="text" class="form-input" id="csubject" placeholder="How can we help?">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-input" id="cmessage" rows="4" placeholder="Write your message here..."></textarea>
+      </div>
+      <button class="contact-submit" onclick="sendMessage()">Send Message 📨</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-icon">🌿</div>
+        <div class="logo-text">
+          <span class="logo-name" style="color:white">Tarang Hazaribagh</span>
+          <span class="logo-tag">Empowering Lives</span>
+        </div>
+      </div>
+      <p>A non-profit organization working to uplift underprivileged communities across Jharkhand through education, healthcare, and sustainable livelihoods.</p>
+      <p style="margin-top:12px;font-size:12px">Registered under Society Registration Act · 80G Certified</p>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#causes">Our Causes</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#donate">Donate</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Programs</div>
+      <ul class="footer-links">
+        <li><a href="#">Education</a></li>
+        <li><a href="#">Healthcare</a></li>
+        <li><a href="#">Women Empowerment</a></li>
+        <li><a href="#">Livelihood</a></li>
+        <li><a href="#">Child Welfare</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <ul class="footer-links">
+        <li><a href="#">Hazaribagh, Jharkhand</a></li>
+        <li><a href="#">contact@taranghazaribagh.org</a></li>
+        <li><a href="#">+91 94XXX XXXXX</a></li>
+        <li><a href="#donate">Donate Now</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Tarang Hazaribagh. All rights reserved.</span>
+    <span>Made with ❤️ for Jharkhand</span>
+  </div>
+</footer>
+
+<!-- ── SUCCESS MODAL ──────────────────────────────────── -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <div class="modal-title">Thank You!</div>
+    <div class="modal-text" id="modalText">Your donation has been received. You will receive an 80G tax exemption receipt on your registered email within 2 working days. Together we are changing lives!</div>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- ── TOAST ──────────────────────────────────────────── -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // ── NAVBAR SCROLL ──────────────────────────────────
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ── HAMBURGER ──────────────────────────────────────
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // ── COUNTER ANIMATION ──────────────────────────────
+  function animateCount(el) {
+    const target = parseInt(el.dataset.count);
+    const dur = 2000;
+    const step = target / (dur / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = Math.floor(current).toLocaleString('en-IN') + '+';
+      if (current >= target) clearInterval(timer);
+    }, 16);
+  }
+
+  const counters = document.querySelectorAll('[data-count]');
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); counterObs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObs.observe(c));
+
+  // ── SCROLL REVEAL ──────────────────────────────────
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ── AMOUNT SELECTION ───────────────────────────────
+  let selectedAmount = 2000;
+  function selectAmount(btn, amount) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    if (amount === 0) {
+      document.getElementById('donateAmount').value = '';
+      document.getElementById('donateAmount').focus();
+      selectedAmount = 0;
+    } else {
+      selectedAmount = amount;
+      document.getElementById('donateAmount').value = amount;
+      document.getElementById('btnAmount').textContent = amount.toLocaleString('en-IN');
+    }
+  }
+
+  document.getElementById('donateAmount').addEventListener('input', function () {
+    const val = parseInt(this.value) || 0;
+    document.getElementById('btnAmount').textContent = val.toLocaleString('en-IN');
+    selectedAmount = val;
+  });
+
+  // ── TABS ───────────────────────────────────────────
+  function switchTab(btn, tab) {
+    document.querySelectorAll('.donate-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ── DONATE FORM SUBMIT ─────────────────────────────
+  function submitDonation() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const amount = parseInt(document.getElementById('donateAmount').value) || 0;
+
+    if (!fname) return showToast('⚠️ Please enter your name');
+    if (!email || !email.includes('@')) return showToast('⚠️ Please enter a valid email');
+    if (!phone || phone.length < 10) return showToast('⚠️ Please enter a valid phone number');
+    if (amount < 100) return showToast('⚠️ Minimum donation is ₹100');
+
+    document.getElementById('modalText').innerHTML =
+      `Your donation of <strong>₹${amount.toLocaleString('en-IN')}</strong> has been received, <strong>${fname}</strong>!<br><br>
+      An 80G tax exemption receipt will be sent to <strong>${email}</strong> within 2 working days.<br><br>
+      Thank you for making a difference! 🌿`;
+
+    document.getElementById('successModal').classList.add('open');
+  }
+
+  // ── CAUSE DONATE MODAL ─────────────────────────────
+  function openDonateModal(cause) {
+    document.getElementById('donate').scrollIntoView({ behavior: 'smooth' });
+    showToast(`❤️ Donating to: ${cause}`);
+  }
+
+  // ── MODAL CLOSE ────────────────────────────────────
+  function closeModal() {
+    document.getElementById('successModal').classList.remove('open');
+  }
+  document.getElementById('successModal').addEventListener('click', function (e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ── COPY UPI ───────────────────────────────────────
+  function copyUPI() {
+    navigator.clipboard.writeText('taranghazaribagh@upi').then(() => {
+      showToast('✅ UPI ID copied to clipboard!');
+    }).catch(() => {
+      showToast('UPI: taranghazaribagh@upi');
+    });
+  }
+
+  // ── CONTACT FORM ───────────────────────────────────
+  function sendMessage() {
+    const name = document.getElementById('cname').value.trim();
+    const email = document.getElementById('cemail').value.trim();
+    const message = document.getElementById('cmessage').value.trim();
+
+    if (!name) return showToast('⚠️ Please enter your name');
+    if (!email || !email.includes('@')) return showToast('⚠️ Please enter a valid email');
+    if (!message) return showToast('⚠️ Please write a message');
+
+    document.getElementById('modalText').innerHTML =
+      `Thank you <strong>${name}</strong>! Your message has been received.<br><br>
+      Our team will get back to you at <strong>${email}</strong> within 24 hours.`;
+    document.getElementById('successModal').classList.add('open');
+
+    document.getElementById('cname').value = '';
+    document.getElementById('cemail').value = '';
+    document.getElementById('cphone').value = '';
+    document.getElementById('csubject').value = '';
+    document.getElementById('cmessage').value = '';
+  }
+
+  // ── TOAST ──────────────────────────────────────────
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+</script>
+</body>
+</html>
